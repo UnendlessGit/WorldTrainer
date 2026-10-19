@@ -52,6 +52,12 @@ Short recording clips must not impose an artificial maximum generation duration.
 
 Let me select a trained world model and interact with its generated environment in a viewport inside this tab.
 
+**Run must be a continuous, real-time interactive experience, like playing a game.** While the model is running, the viewport should continuously display newly generated frames, and my live keyboard and mouse inputs should influence the ongoing generation with low latency. I must be able to press, hold, release, and combine controls or move the mouse at any moment while generation continues.
+
+For example, holding a movement key should continuously influence movement, releasing it should update the ongoing behavior, and moving the mouse should affect the view while I am interacting. This should work through live controls for any supported environment, not just the Minecraft example.
+
+**Do not implement a workflow where I enter controls, submit an action sequence, click Generate, or wait for a finished video clip before interacting again.** Starting Run should start an ongoing interactive session; controls must remain live throughout that session.
+
 Support a broad range of computer actions, including key presses and holds, simultaneous keys, modifiers, relative mouse movement, mouse-button presses and holds, and scrolling. The usable controls should correspond to the recording data and what the model has learned, rather than assuming every model understands every action.
 
 Provide convenient controls for starting, pausing, resetting, and stopping generation, along with useful runtime performance information. Input capture should behave naturally while interacting with the viewport and release cleanly when I leave it.
@@ -74,4 +80,4 @@ I want strong visual quality, responsive controls, temporal consistency, and use
 
 Deliver a functional, cohesive macOS app with a clear interface and working import, training, model management, and interactive generation.
 
-Choose the technical approach yourself. Keep the product broadly useful for games and other compatible environments. Be honest about demonstrated capabilities, hardware limitations, and any functionality that still needs work. Do not substitute mock training, simulated statistics, or recording playback for the real functionality.
+Choose the technical approach yourself. Keep the product broadly useful for games and other compatible environments. Do not substitute mock training, simulated statistics, or recording playback for the real functionality.
