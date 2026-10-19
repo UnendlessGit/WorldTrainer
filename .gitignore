@@ -16,6 +16,7 @@
 
 # Build and caches
 .build/
+.build-release/
 DerivedData/
 __pycache__/
 .venv/
@@ -28,3 +29,6 @@ node_modules/
 
 # Product prompt is maintained separately in chat
 /PROMPT.md
+
+# Local toolchain helpers
+/.tools/

@@ -1,0 +1,82 @@
+name: WorldTrainer
+options:
+  bundleIdPrefix: com.worldtrainer
+  deploymentTarget:
+    macOS: '15.0'
+  createIntermediateGroups: true
+  groupSortPosition: top
+settings:
+  base:
+    SWIFT_VERSION: '5.0'
+    SWIFT_STRICT_CONCURRENCY: minimal
+    ARCHS: arm64
+    MACOSX_DEPLOYMENT_TARGET: '15.0'
+    CODE_SIGN_STYLE: Manual
+    CODE_SIGN_IDENTITY: '-'
+    CODE_SIGNING_REQUIRED: 'NO'
+    CODE_SIGNING_ALLOWED: 'NO'
+    ENABLE_HARDENED_RUNTIME: 'NO'
+    DEAD_CODE_STRIPPING: 'YES'
+    ENABLE_USER_SCRIPT_SANDBOXING: 'NO'
+packages:
+  MLX:
+    url: https://github.com/ml-explore/mlx-swift.git
+    exactVersion: 0.32.3
+targets:
+  WorldTrainer:
+    type: application
+    platform: macOS
+    sources:
+      - App
+      - Core
+      - Learning
+      - Services
+      - Stores
+      - Views
+      - Resources/Assets.xcassets
+    dependencies:
+      - package: MLX
+        product: MLX
+      - package: MLX
+        product: MLXNN
+      - package: MLX
+        product: MLXOptimizers
+      - package: MLX
+        product: MLXRandom
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.worldtrainer.WorldTrainer
+        PRODUCT_NAME: WorldTrainer
+        INFOPLIST_FILE: Resources/Info.plist
+        COMBINE_HIDPI_IMAGES: 'YES'
+        ENABLE_APP_SANDBOX: 'NO'
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        SWIFT_EMIT_LOC_STRINGS: 'YES'
+        MARKETING_VERSION: '1.0'
+        CURRENT_PROJECT_VERSION: '1'
+        LD_RUNPATH_SEARCH_PATHS: '$(inherited) @executable_path/../Frameworks'
+  WorldTrainerTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - AppTests
+    dependencies:
+      - target: WorldTrainer
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: 'YES'
+        CODE_SIGN_STYLE: Manual
+        CODE_SIGN_IDENTITY: '-'
+        CODE_SIGNING_REQUIRED: 'NO'
+        CODE_SIGNING_ALLOWED: 'NO'
+schemes:
+  WorldTrainer:
+    build:
+      targets:
+        WorldTrainer: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - WorldTrainerTests
