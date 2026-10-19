@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+
+# Local example and imported recording data
+/RecordingFormat/
+/Recordings/
+/Datasets/
+
+# Generated model weights and checkpoints
+/Checkpoints/
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.npz
+
+# Build and caches
+.build/
+DerivedData/
+__pycache__/
+.venv/
+node_modules/
+
+# Local credentials
+.env
+.env.*
+!.env.example
